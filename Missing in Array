@@ -1,0 +1,16 @@
+class Solution {
+    int missingNum(int arr[]) {
+        int n=arr.length+1;
+        Set<Integer>hash=new HashSet<>();
+      for(int num:arr){
+          hash.add(num);
+      }
+        for(int i=1;i<=n;i++)
+        {
+            if(!hash.contains(i)){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
