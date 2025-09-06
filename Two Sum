@@ -1,0 +1,15 @@
+class Solution {
+    boolean twoSum(int arr[], int target) {
+        Set<Integer>hash=new HashSet<>();
+        for(int num:arr)
+        {
+            int rem =target-num;
+            if(hash.contains(rem)){
+                return true;
+            }
+            hash.add(num);
+            
+        }
+        return false;
+    }
+}
