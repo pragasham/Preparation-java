@@ -1,0 +1,19 @@
+class Solution {
+    int maxProduct(int[] arr) {
+        // code here
+        int maxe=arr[0];
+        int mine=arr[0];
+        int maxs=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]<0){
+                int tem=maxe;
+                maxe=mine;
+                mine=tem;
+            }
+            maxe=Math.max(arr[i],maxe*arr[i]);
+            mine=Math.min(arr[i],mine*arr[i]);
+            maxs=Math.max(maxs,maxe);
+        }
+        return maxs;
+    }
+}
