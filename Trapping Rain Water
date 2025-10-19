@@ -1,0 +1,30 @@
+class Solution {
+    public int maxWater(int arr[]) {
+        // code here
+        int left=0,right=arr.length-1;
+        int leftmax=0,rightmax=0,res=0;
+        while(left<=right){
+            if(arr[left]<=arr[right]){
+                if(arr[left]<=leftmax){
+                    res+=leftmax-arr[left];
+                    left++;
+                }
+                else{
+                    leftmax=arr[left];
+                    left++;
+                }
+            }
+            else{
+                if(arr[right]<=rightmax){
+                    res+=rightmax-arr[right];
+                    right--;
+                }
+                else{
+                    rightmax=arr[right];
+                    right--;
+                }
+            }
+        }
+        return res;
+    }
+}
