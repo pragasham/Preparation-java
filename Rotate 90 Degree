@@ -1,0 +1,28 @@
+class Solution {
+    public void rotateMatrix(int[][] mat) {
+        // code here
+        int n=mat.length;
+        
+          for(int i=0;i<n;i++){
+           int left=0;
+           int right=n-1;
+           while(left<=right){
+              int tem= mat[i][left];
+              mat[i][left]=mat[i][right];
+              mat[i][right]=tem;
+              left++;
+              right--;
+           }
+       }
+        
+       for(int i=0;i<n;i++){
+           for(int j=i+1;j<n;j++){
+               int tem=mat[i][j];
+               mat[i][j]=mat[j][i];
+               mat[j][i]=tem;
+               
+           }
+       }
+     
+    }
+}
