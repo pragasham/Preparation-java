@@ -1,0 +1,44 @@
+class Solution {
+    public int[] matrixDiagonally(int[][] mat) {
+        int n=mat.length;
+        int total=n*n;
+        int[]ans=new int[total];
+        int row=0;
+        int col=0;
+        int index=0;
+        boolean upward=true;
+        while(index<total){
+            ans[index++]=mat[row][col];
+            if(index == total) break;
+            if(upward){
+                if(col==n-1){
+                    upward=false;
+                    row++;
+                }
+                else if(row==0){
+                    upward=false;
+                    col++;
+                }
+                else{
+                    row--;
+                    col++;
+                }
+            }
+            else{
+                if(row==n-1){
+                    upward=true;
+                    col++;
+                }
+                else if(col==0){
+                    upward=true;
+                    row++;
+                }
+                else{
+                    row++;
+                    col--;
+                }
+            }
+        }
+        return ans;
+    }
+}
