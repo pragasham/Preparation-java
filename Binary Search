@@ -1,0 +1,21 @@
+class Solution {
+    static boolean searchInSorted(int arr[], int k) {
+        // Your code here
+        int a=0;
+        int b=arr.length-1;
+        while(a<=b){
+            int mid=(a+b)/2;
+            if(arr[mid]==k){
+                return true;
+            }
+            else if(arr[mid]>k){
+                b=mid-1;
+            }
+            else {
+                a=mid+1;
+            }
+        }
+        return false;
+    }
+  
+}
