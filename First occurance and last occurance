@@ -1,0 +1,48 @@
+import java.util.*;
+
+class GFG {
+    ArrayList<Integer> find(int arr[], int x) {
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(firstOccurrence(arr, x));
+        res.add(lastOccurrence(arr, x));
+        return res;
+    }
+
+    static int firstOccurrence(int arr[], int x) {
+        int a = 0, b = arr.length - 1;
+        int ans = -1;
+
+        while (a <= b) {
+            int mid = (a + b) / 2;
+
+            if (arr[mid] == x) {
+                ans = mid;
+                b = mid - 1;   // move left
+            } else if (arr[mid] > x) {
+                b = mid - 1;
+            } else {
+                a = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+    static int lastOccurrence(int arr[], int x) {
+        int a = 0, b = arr.length - 1;
+        int ans = -1;
+
+        while (a <= b) {
+            int mid = (a + b) / 2;
+
+            if (arr[mid] == x) {
+                ans = mid;
+                a = mid + 1;   // move right
+            } else if (arr[mid] > x) {
+                b = mid - 1;
+            } else {
+                a = mid + 1;
+            }
+        }
+        return ans;
+    }
+}
