@@ -1,0 +1,59 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+        int peak=findpeak(A);
+        int left=binaryasc(A,0,peak,B);
+        if(left!=-1){
+            return left;
+        }
+        return binarydes(A,peak+1,A.length-1,B);
+    }
+    public int findpeak(int [] arr){
+        int a=0;
+        int b=arr.length-1;
+        while(a<=b){
+            int mid=a+(b-a)/2;
+            if((mid==0 || arr[mid]>=arr[mid-1]) && (mid==arr.length-1 || arr[mid]>=arr[mid+1])){
+                return mid;
+            }
+            if(mid < arr.length-1 && arr[mid]<arr[mid+1]){
+                a=mid+1;
+            }
+            else{
+                b=mid-1;
+            }
+        }
+        return -1;
+    }
+    public int binaryasc(int[] arr,int a,int b,int target){
+        while(a<=b){
+            int mid=a+(b-a)/2;
+            if(arr[mid]==target){
+                return mid;
+            }
+            if(arr[mid]>target){
+                b=mid-1;
+                
+            }
+            else{
+                a=mid+1;
+            }
+        }
+        return -1;
+    }
+    public int binarydes(int [] arr,int a, int b, int target){
+        while(a<=b){
+            int mid=a+(b-a)/2;
+            if(arr[mid]==target){
+                return mid;
+            }
+            if(arr[mid]>target){
+                a=mid+1;
+            }
+            else{
+                b=mid-1;
+            }
+        }
+        return -1;
+    }
+    
+}
