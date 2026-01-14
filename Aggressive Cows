@@ -1,0 +1,36 @@
+import java.util.Arrays;
+class Solution {
+    public int aggressiveCows(int[] stalls, int k) {
+        Arrays.sort(stalls);
+        int low=1;
+        int high=stalls[stalls.length-1]-stalls[0];
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(canbeplace(stalls,mid,k)){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        
+        return high;
+    }
+    public boolean canbeplace(int [] stalls,int i , int k){
+        int cows=1;
+        int lastcow=0;
+        for(int j=1;j<stalls.length;j++){
+            if(stalls[j]-stalls[lastcow]>=i){
+                cows++;
+                lastcow=j;
+            }
+        }
+        if(cows>=k){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+}
